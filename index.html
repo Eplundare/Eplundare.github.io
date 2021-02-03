@@ -74,12 +74,12 @@
       };
       document.body.appendChild(script);
 
-       var instance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%") {
+       var instance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {
 	    onProgress: UnityProgress,
 	    Module : {
 	    cacheControl: {"default": "immutable"},
 	    }
-     }
+     })
 
     </script>
   </body>
