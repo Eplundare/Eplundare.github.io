@@ -27,11 +27,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/BUILD16_optimization1.loader.js";
+      var loaderUrl = buildUrl + "/0f2fafc1d12733e57f4dcafb583e4870.js";
       var config = {
-        dataUrl: buildUrl + "/BUILD16_optimization1.data",
-        frameworkUrl: buildUrl + "/BUILD16_optimization1.framework.js",
-        codeUrl: buildUrl + "/BUILD16_optimization1.wasm",
+        dataUrl: buildUrl + "/0cec7c8f9fde2b8887f89754d072c731.data.gz",
+        frameworkUrl: buildUrl + "/b55254d77351dc2343228d8f5fec0af9.js.gz",
+        codeUrl: buildUrl + "/d0c147d9b12ce671ce720e70472b0946.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "UniverseKADK",
@@ -73,18 +73,14 @@
         });
       };
       document.body.appendChild(script);
-      
-      setInterval(function() {
-        if (typeof TOTAL_MEMORY !== 'undefined') {
-        try {
-          var totalMem = TOTAL_MEMORY/1024.0/1024.0;
-          var usedMem = (TOTAL_STACK + (STATICTOP - STATIC_BASE) +
-                        (DYNAMICTOP - DYNAMIC_BASE))/1024.0/1024.0;
-          console.log('Memory stats - used: ' + Math.ceil(usedMem) + 'M' +
-                      ' free: ' + Math.floor(totalMem - usedMem) + 'M');
-        } catch(e) {}
-        }
-        }, 5000);
+
+       var instance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {
+	    onProgress: UnityProgress,
+	    Module : {
+	    cacheControl: {"default": "immutable"},
+	    }
+     }
+
     </script>
   </body>
 </html>
